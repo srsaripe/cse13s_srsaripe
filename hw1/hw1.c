@@ -4,45 +4,43 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-// For the value of Pi, please use M_PI, which is defined in math.h.
+// area of a disk: πr²
 double area_of_disk(double radius) {
-  // your code here
-
-  // TODO: remove all these UNUSED things when you actually write the function.
-  UNUSED(radius);
-  return 0;
+    return M_PI * radius * radius;
 }
 
+// area of ring: big circle - small circle
 double area_of_ring(double outer_radius, double inner_radius) {
-  // your code here
-
-  UNUSED(outer_radius);
-  UNUSED(inner_radius);
-  return 0;
+    return area_of_disk(outer_radius) - area_of_disk(inner_radius);
 }
 
+// absolute difference
 int bigger_minus_smaller(int a, int b) {
-  // your code here
-
-  UNUSED(a);
-  UNUSED(b);
-  return 0;
+    if (a > b) {
+        return a - b;
+    }
+    return b - a;
 }
 
+// check if x is in [lower_bound, upper_bound]
 bool value_in_range(int lower_bound, int x, int upper_bound) {
-  // your code here
-
-  UNUSED(lower_bound);
-  UNUSED(upper_bound);
-  UNUSED(x);
-  return false;
+    return (x >= lower_bound) && (x <= upper_bound);
 }
 
+// sum of two largest squares
 int sum_of_greater_squares(int a, int b, int c) {
-  // your code here
+    int a2 = a * a;
+    int b2 = b * b;
+    int c2 = c * c;
 
-  UNUSED(a);
-  UNUSED(b);
-  UNUSED(c);
-  return false;
+    int sum = a2 + b2 + c2;
+
+    // subtract smallest square
+    if (a2 <= b2 && a2 <= c2) {
+        return sum - a2;
+    } else if (b2 <= a2 && b2 <= c2) {
+        return sum - b2;
+    } else {
+        return sum - c2;
+    }
 }
